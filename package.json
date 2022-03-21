@@ -21,5 +21,10 @@
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "autocomplete": "^0.0.1",
+        "easy": "^13.0.39",
+        "jquery": "^3.6.0"
     }
 }

@@ -11,13 +11,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('bower_components/EasyAutocomplete/dist/easy-autocomplete.min.css')}}">
 </head>
 <body>
     <div id="app">
@@ -76,7 +80,14 @@
         </nav>
 
         <main class="py-4 ">
+        
+        <script src="{{ asset('bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js')}}"></script>
             @yield('content')
+
+
+        <script>
+        
+        </script>    
         </main>
     </div>
 </body>

@@ -80,14 +80,15 @@ return [
 
         'sqlsrv' => [
             'driver'   => 'sqlsrv',
-            'host'     => env( 'SVR-FERKA\SQLEXPRESS' ),
-            'port'     => env( '' ),
-            'database' => env( 'bd_prueba' ),
-            'username' => env( 'sa' ),
-            'password' => env( 'Qu4l1ty' ),
-            'prefix'   => '',
-            'charset'  => 'UTF-8',
-            'pooling'  => false,
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
         ],
     ],
 
