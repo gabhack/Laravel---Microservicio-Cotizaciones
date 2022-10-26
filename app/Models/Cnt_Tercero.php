@@ -18,4 +18,12 @@ class Cnt_Tercero extends Model
         ->get();
         return \response()->json($posts);
     }
+
+    public function findbycode($cod)
+    {
+       // return $this->where('Codter','like','%$q%')->get();
+        $ter = $this->where('codter', '=', '%'.$cod.'%')
+        ->first();
+        return $ter;
+    }
 }

@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\EloquentUserProvider;
+
 
 class LoginController extends Controller
 {
@@ -19,7 +25,10 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers{
+        username as protected usernametrait;
+        validateLogin as protected validating;
+    }
 
     /**
      * Where to redirect users after login.
@@ -32,9 +41,37 @@ class LoginController extends Controller
      * Create a new controller instance.
      *
      * @return void
+     * 
      */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+   
+public function login(Request $request)
+    {
+
+      
+       $validacion=  $this->validate($request, [
+        'username'=>'required',
+            'pwd'=>'required',
+        ]);
+
+      
+        $login=Auth::attempt($request->only('username', 'pwd'));
+
+            if($login)
+            {
+                return 'shi';
+            }
+
+            return back()->withErrors([
+                'username' => 'The provided credentials do not match our records.',
+            ])->onlyInput('username');
+
+    }
+
+ 
 }

@@ -15,4 +15,6 @@ class Ven_Clientes extends Model
         $posts = Ven_Clientes::where('title', 'LIKE', '%'.$q.'%')->get();
         return response()->json($posts);
     }
+
+    
 }

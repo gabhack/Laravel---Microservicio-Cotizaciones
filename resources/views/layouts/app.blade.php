@@ -22,6 +22,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('bower_components/EasyAutocomplete/dist/easy-autocomplete.min.css')}}">
+    @livewireScripts
 </head>
 <body>
     <div id="app">
@@ -90,5 +91,6 @@
         </script>    
         </main>
     </div>
+    @livewireScripts
 </body>
 </html>

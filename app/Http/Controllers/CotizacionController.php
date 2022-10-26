@@ -8,6 +8,9 @@ use App\Models\Ven_ListaPrecios;
 use App\Models\Ven_Vendedor;
 use App\Models\Alm_Insumos;
 use App\Models\Gen_Almacen;
+use App\Models\Ven_MaeCotiza;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 
 class CotizacionController extends Controller
 {
@@ -17,6 +20,8 @@ private $listas=null;
 private $vendedores=null;
 private $productos=null;
 private $almacenes=null;
+private $lastMaeCotiza=null;
+
 
 public function __CONSTRUCT()
 {
@@ -25,6 +30,9 @@ public function __CONSTRUCT()
     $this->vendedores=new Ven_Vendedor();
     $this->productos=new Alm_Insumos();
     $this->almacenes=new Gen_Almacen();
+    $this->maeCotizacion=new Ven_MaeCotiza();
+    $this->lastMaeCotiza=new Ven_MaeCotiza();
+    
 
 }
 
@@ -46,6 +54,24 @@ public function findproducto(Request $req)
 {
 
     return $this->productos->findbyname($req->q, $req->l,$req->a);
+}
+
+private $maeCotizacion=null;
+
+public function saveMaeCotizacion(Request $req)
+{
+
+    $this->maeCotizacion->codalm = $req->input('selectalmacenes');
+    $this->maeCotizacion->numcot = $this->lastMaeCotiza->getLastPlusOneCode();
+    $this->maeCotizacion->codter = $req->input('razon');
+    $this->maeCotizacion->feccot = Carbon::now();
+    $this->maeCotizacion->vigencia=30;
+    $this->maeCotizacion->codusu="ARONCO";
+    $this->maeCotizacion->codlist= $req->input('selectlistaprecios');
+    $this->maeCotizacion->save();
+
+
+    return $this->maeCotizacion;
 }
 
 }

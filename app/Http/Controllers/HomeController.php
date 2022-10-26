@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return DB::table('food')->get();
-        //return view('home');
+        
+        return view('home');
     }
 }

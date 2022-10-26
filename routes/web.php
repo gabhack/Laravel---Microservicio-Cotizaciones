@@ -19,11 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => 'auth'], function () {
 Route::get('/cotizar', [CotizacionController::class, 'index']);
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/findcliente', [App\Http\Controllers\CotizacionController::class, 'findcliente'])->name('findcliente');
 Route::get('/findproducto', [App\Http\Controllers\CotizacionController::class, 'findproducto'])->name('findproducto');
+Route::post('/savemaecotizacion', [App\Http\Controllers\CotizacionController::class, 'saveMaeCotizacion'])->name('saveMaeCotizacion');
+});
 
 Auth::routes();

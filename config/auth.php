@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'Cfg_Usuarios',
     ],
 
     /*
@@ -38,10 +38,9 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'Cfg_Usuarios',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -60,15 +59,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'Cfg_Usuarios' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        /*'users' => [
+            'driver' => 'database',
+           'table' => 'Cfg_Usuarios',
+        ],*/
     ],
 
     /*
@@ -87,8 +86,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'Cfg_Usuarios' => [
+            'provider' => 'Cfg_Usuarios',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
